@@ -1,0 +1,21 @@
+diff -ru a/hack/lib/golang.sh b/hack/lib/golang.sh
+--- a/hack/lib/golang.sh	2022-09-19 13:15:01.043523655 +0200
++++ b/hack/lib/golang.sh	2022-09-19 13:18:26.247490280 +0200
+@@ -844,14 +844,10 @@
+         goasmflags=""
+     fi
+ 
+-    goldflags="all=$(kube::version::ldflags) ${GOLDFLAGS:-}"
+-    if [[ "${DBG:-}" != 1 ]]; then
+-        # Not debugging - disable symbols and DWARF.
+-        goldflags="${goldflags} -s -w"
+-    fi
++    goldflags="all=$(kube::version::ldflags) -linkmode=external -compressdwarf=false -B 0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n') -extldflags '-Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  ' ${GOLDFLAGS:-}"
+ 
+     # Extract tags if any specified in GOFLAGS
+-    gotags="selinux,notest,$(echo "${GOFLAGS:-}" | sed -ne 's|.*-tags=\([^-]*\).*|\1|p')"
++    gotags="rpm_crashtraceback,selinux,notest,libtrust_openssl,$(echo "${GOFLAGS:-}" | sed -ne 's|.*-tags=\([^-]*\).*|\1|p')"
+ 
+     local -a targets=()
+     local arg
+Only in b/hack/lib: golang.sh.orig
