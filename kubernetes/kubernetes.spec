@@ -1,7 +1,7 @@
 %global _dwz_low_mem_die_limit 0
 
 %global goipath github.com/kubernetes/kubernetes
-Version:        1.25.5
+Version:        1.26.0
 
 %gometa
 
@@ -21,7 +21,6 @@ Source2:	kubelet
 Source3:	kubelet.service
 
 Patch0: build-with-debuginfo.patch
-Patch1: go-version.patch
 
 BuildRequires: make
 BuildRequires: systemd
@@ -143,5 +142,7 @@ rm -f %{buildroot}%{_mandir}/man1/kube-{apiserver,controller-manager,proxy,sched
 %{_datadir}/fish-completion/completions/kubectl
 
 %changelog
+* Sun Dec 11 2022 Karel Van Hecke <copr@karelvanhecke.com> - 1.26.0-1
+- Bump to v1.26.0
 * Sat Dec 10 2022 Karel Van Hecke <copr@karelvanhecke.com> - 1.25.5-1
 - Initial build
