@@ -50,7 +50,7 @@ URL:            https://github.com/cri-o/cri-o
 Source0:        %{gosource}
 
 %if 0%{?rhel}
-BuildRequires:  golang >= 1.18
+BuildRequires:  golang >= 1.19
 %endif
 %if 0%{?rhel} && 0%{?rhel} <= 8
 # e.g. el6 has ppc64 arch without gcc-go, so EA tag is required
