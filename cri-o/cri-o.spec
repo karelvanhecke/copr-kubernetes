@@ -37,7 +37,7 @@ Version:                1.26.0
 
 Name:           cri-o
 Epoch:          0
-Release:        1.release-1.26.c187a0c%{?dist}
+Release:        1.c187a0c%{?dist}
 Summary:        Open Container Initiative-based implementation of Kubernetes Container Runtime Interface
 
 
@@ -232,7 +232,7 @@ sed -i -e 's/,metacopy=on//g' /etc/containers/storage.conf
 %endif
 
 %changelog
-* Sun Dec 10 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.26.0-1.release-1.26.c187a0c
+* Sun Dec 10 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.26.0-1.c187a0c
 - Bump to release-1.26, commit c187a0c
 * Sat Dec 10 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.25.1-1
 - Initial build
