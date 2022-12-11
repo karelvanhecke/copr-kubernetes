@@ -2,6 +2,9 @@
 %global goipath         github.com/cri-o/cri-o
 Version:                1.26.0
 
+%global gosource https://github.com/cri-o/cri-o/archive/release-1.26/cri-o-release-1.26.tar.gz
+%global extractdir cri-o-release-1.26
+
 %if 0%{?rhel} && 0%{?rhel} <= 8
 %define gobuild(o:) %{expand:
   # https://bugzilla.redhat.com/show_bug.cgi?id=995136#c12
@@ -44,7 +47,7 @@ Summary:        Open Container Initiative-based implementation of Kubernetes Con
 # Upstream license specification: Apache-2.0
 License:        ASL 2.0
 URL:            https://github.com/cri-o/cri-o
-Source0:        https://github.com/cri-o/cri-o/archive/refs/heads/release-1.26.zip
+Source0:        %{gosource}
 
 %if 0%{?rhel}
 BuildRequires:  golang >= 1.18
@@ -99,7 +102,7 @@ Interface.
 
 %prep
 %if 0%{?rhel} && 0%{?rhel} <= 8
-%autosetup -p1 -n %{name}-release-1.26
+%autosetup -p1 -n %{extractdir}
 %else
 %goprep -k
 %endif
