@@ -1,13 +1,16 @@
 %global goipath github.com/kubernetes-sigs/cri-tools
-Version: 1.25.0
+Version: 1.26.0
+
+%global gosource https://github.com/kubernetes-sigs/cri-tools/archive/master/cri-tools-master.tar.gz
+%global extractdir cri-tools-master
 
 %gometa
 
-%global commit0 a12c2d088df8bea138eaeb5a0217d98b6cf93a44
+%global commit0 47f9d2759546fb4be7bc69d01620ce8fd0219591
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 Name: cri-tools
-Release: 1%{?dist}
+Release: 1.47f9d27%{?dist}
 Summary: CLI and validation tools for Container Runtime Interface
 License: ASL 2.0
 URL: %{gourl}
@@ -35,5 +38,7 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %{_bindir}/*
 
 %changelog
+* Tue Dec 13 2022 Karel Van Hecke <copr@karelvanhecke.com> - 1.26.0-1.47f9d27
+- Bump to v1.26.0
 * Sat Dec 10 2022 Karel Van Hecke <copr@karelvanhecke.com> - 1.25.0-1
 - Initial build
