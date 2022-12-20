@@ -36,11 +36,11 @@ Version:                1.26.0
 %global service_name crio
 
 # Commit for the builds
-%global commit0 c187a0c0a8f0f2162326dc07a1b770a1d7c6398f
+%global commit0 2ab00cb8556485de15e70f15e9c051e4b77128d2
 
 Name:           cri-o
 Epoch:          0
-Release:        1.c187a0c%{?dist}
+Release:        1.2ab00cb%{?dist}
 Summary:        Open Container Initiative-based implementation of Kubernetes Container Runtime Interface
 
 
@@ -235,6 +235,8 @@ sed -i -e 's/,metacopy=on//g' /etc/containers/storage.conf
 %endif
 
 %changelog
+* Tue Dec 20 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.26.0-1.2ab00cb
+- Bump to commit 2ab00cb
 * Sun Dec 11 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.26.0-1.c187a0c
 - Bump to release-1.26, commit c187a0c
 * Sat Dec 10 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.25.1-1
