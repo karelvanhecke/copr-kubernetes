@@ -52,13 +52,11 @@ BuildRequires:  golang >= 1.19
 %if 0%{?rhel} && 0%{?rhel} <= 8
 # e.g. el6 has ppc64 arch without gcc-go, so EA tag is required
 ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 aarch64 %{arm}}
-%else
-# required for el9 and all fedora
-BuildRequires:  go-rpm-macros
 %endif
 %if 0%{?fedora}
 BuildRequires:  btrfs-progs-devel
 BuildRequires:  device-mapper-devel
+BuildRequires:  go-rpm-macros
 %endif
 BuildRequires:  git-core
 BuildRequires:  glib2-devel
@@ -122,10 +120,6 @@ $(hack/libdm_no_deferred_remove_tag.sh)
 $(hack/seccomp_tag.sh)
 $(hack/selinux_tag.sh)"
 
-%if 0%{?centos} && 0%{?centos} <= 8
-BUILDTAGS="$BUILDTAGS containers_image_openpgp"
-%endif
-
 export BASE_LDFLAGS="-X %{goipath}/internal/pkg/criocli.DefaultsPath=%{criocli_path}
 -X  %{goipath}/internal/version.buildDate=%{build_timestamp}
 -X  %{goipath}/internal/version.gitCommit=%{commit0}
@@ -159,8 +153,8 @@ install -p -m 755 bin/%{service_name} %{buildroot}%{_bindir}
 
 # install conf files
 install -dp %{buildroot}%{_sysconfdir}/cni/net.d
-install -p -m 644 contrib/cni/10-crio-bridge.conf %{buildroot}%{_sysconfdir}/cni/net.d/100-crio-bridge.conf
-install -p -m 644 contrib/cni/99-loopback.conf %{buildroot}%{_sysconfdir}/cni/net.d/200-loopback.conf
+install -p -m 644 contrib/cni/10-crio-bridge.conflist %{buildroot}%{_sysconfdir}/cni/net.d/100-crio-bridge.conflist
+install -p -m 644 contrib/cni/99-loopback.conflist %{buildroot}%{_sysconfdir}/cni/net.d/200-loopback.conflist
 
 install -dp %{buildroot}%{_sysconfdir}/%{service_name}
 install -dp %{buildroot}%{_datadir}/containers/oci/hooks.d
@@ -211,8 +205,8 @@ sed -i -e 's/,metacopy=on//g' /etc/containers/storage.conf
 %{_mandir}/man8/%{service_name}*.8*
 %dir %{_sysconfdir}/%{service_name}
 %config(noreplace) %{_sysconfdir}/%{service_name}/%{service_name}.conf
-%config(noreplace) %{_sysconfdir}/cni/net.d/100-%{service_name}-bridge.conf
-%config(noreplace) %{_sysconfdir}/cni/net.d/200-loopback.conf
+%config(noreplace) %{_sysconfdir}/cni/net.d/100-%{service_name}-bridge.conflist
+%config(noreplace) %{_sysconfdir}/cni/net.d/200-loopback.conflist
 %config(noreplace) %{_sysconfdir}/crictl.yaml
 %dir %{_libexecdir}/%{service_name}
 %{_unitdir}/%{service_name}.service
