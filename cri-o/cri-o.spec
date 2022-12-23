@@ -2,9 +2,6 @@
 %global goipath         github.com/cri-o/cri-o
 Version:                1.26.0
 
-%global gosource https://github.com/cri-o/cri-o/archive/release-1.26/cri-o-release-1.26.tar.gz
-%global extractdir cri-o-release-1.26
-
 %if 0%{?rhel} && 0%{?rhel} <= 8
 %define gobuild(o:) %{expand:
   # https://bugzilla.redhat.com/show_bug.cgi?id=995136#c12
@@ -36,18 +33,18 @@ Version:                1.26.0
 %global service_name crio
 
 # Commit for the builds
-%global commit0 2ab00cb8556485de15e70f15e9c051e4b77128d2
+%global commit0 214b77367c48acd75a08610ac8d0941540347691
 
 Name:           cri-o
 Epoch:          0
-Release:        1.2ab00cb%{?dist}
+Release:        2%{?dist}
 Summary:        Open Container Initiative-based implementation of Kubernetes Container Runtime Interface
 
 
 # Upstream license specification: Apache-2.0
 License:        ASL 2.0
 URL:            https://github.com/cri-o/cri-o
-Source0:        %{gosource}
+Source0:        %url/archive/v%{version}/%{name}-%{version}.tar.gz
 
 %if 0%{?rhel}
 BuildRequires:  golang >= 1.19
@@ -102,7 +99,7 @@ Interface.
 
 %prep
 %if 0%{?rhel} && 0%{?rhel} <= 8
-%autosetup -p1 -n %{extractdir}
+%autosetup -p1 -n %{name}-%{version}
 %else
 %goprep -k
 %endif
@@ -235,6 +232,8 @@ sed -i -e 's/,metacopy=on//g' /etc/containers/storage.conf
 %endif
 
 %changelog
+* Fri Dec 23 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.26.0-2
+- Bump to official v1.26.0 release
 * Tue Dec 20 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.26.0-1.2ab00cb
 - Bump to commit 2ab00cb
 * Sun Dec 11 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.26.0-1.c187a0c
