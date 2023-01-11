@@ -232,7 +232,7 @@ sed -i -e 's/,metacopy=on//g' /etc/containers/storage.conf
 %endif
 
 %changelog
-* Wed Jan 11 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.25.2-1
+* Wed Jan 11 2023 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.25.2-1
 - Bump to 1.25.2
 * Sat Dec 10 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.25.1-1
 - Initial build
