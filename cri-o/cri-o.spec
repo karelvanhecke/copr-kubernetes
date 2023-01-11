@@ -1,6 +1,6 @@
 # https://github.com/cri-o/cri-o
 %global goipath         github.com/cri-o/cri-o
-Version:                1.26.0
+Version:                1.26.1
 
 %if 0%{?rhel} && 0%{?rhel} <= 8
 %define gobuild(o:) %{expand:
@@ -33,7 +33,7 @@ Version:                1.26.0
 %global service_name crio
 
 # Commit for the builds
-%global commit0 214b77367c48acd75a08610ac8d0941540347691
+%global commit0 69945ab622a70ab01f4b0df10b107bc48e38dc9e
 
 Name:           cri-o
 Epoch:          0
@@ -226,6 +226,8 @@ sed -i -e 's/,metacopy=on//g' /etc/containers/storage.conf
 %endif
 
 %changelog
+* Wed Jan 11 2023 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.26.1-2
+- Bump to 1.26.1
 * Fri Dec 23 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.26.0-2
 - Bump to official v1.26.0 release
 * Tue Dec 20 2022 Karel Van Hecke <copr@karelvanhecke.com> - 0:1.26.0-1.2ab00cb
