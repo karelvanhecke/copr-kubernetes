@@ -1,5 +1,5 @@
 %global goipath github.com/kubernetes-sigs/cri-tools
-Version: 1.25.0
+Version: 1.26.1
 %global goname cri-tools
 
 %gometa
@@ -30,5 +30,7 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %{_bindir}/*
 
 %changelog
+* Sun May 14 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.26.1-1
+- Bump to v1.26.1
 * Sun Mar 26 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.25.0-1
 - Initial build

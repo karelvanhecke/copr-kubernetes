@@ -1,11 +1,11 @@
 %global goipath k8s.io/kubernetes
 %global forgeurl https://github.com/kubernetes/kubernetes
-Version:        1.25.9
+Version:        1.26.4
 %global goname kubernetes
 
 %gometa
 
-%global commit0 a1a87a0a2bcd605820920c6b0e618a8ab7d117d4
+%global commit0 f89670c3aa4059d6999cb42e23ccb4f0b9a03979
 
 Name:           %{goname}
 Release:        1%{?dist}
@@ -118,6 +118,8 @@ install -m 0644 -t %{buildroot}%{_unitdir} %{SOURCE3}
 %{_datadir}/bash-completion/completions/kubectl
 
 %changelog
+* Sun May 14 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.26.4-1
+- Bump to v1.26.4
 * Tue Apr 18 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.25.9-1
 - Bump to v1.25.9
 * Sun Mar 26 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.25.8-1
