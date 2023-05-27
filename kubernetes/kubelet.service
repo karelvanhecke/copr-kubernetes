@@ -4,10 +4,11 @@ Documentation=https://kubernetes.io/docs/
 Wants=network-online.target
 After=network-online.target containerd.service
 ConditionPathExists=/etc/kubernetes/kubelet.conf
-ConditionPathExists=/var/lib/kubelet/config.yaml
+ConditionPathExists=/etc/kubernetes/kubelet-config.yaml
 
 [Service]
-ExecStart=/usr/bin/kubelet --kubeconfig=/etc/kubernetes/kubelet.conf --config=/var/lib/kubelet/config.yaml
+EnvironmentFile=-/etc/kubernetes/kubelet-flags
+ExecStart=/usr/bin/kubelet --kubeconfig=/etc/kubernetes/kubelet.conf --config=/etc/kubernetes/kubelet-config.yaml $KUBELET_EXTRA_ARGS
 Restart=always
 StartLimitInterval=0
 RestartSec=10
