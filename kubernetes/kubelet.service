@@ -1,14 +1,12 @@
 [Unit]
 Description=kubelet: The Kubernetes Node Agent
 Documentation=https://kubernetes.io/docs/
-Wants=network-online.target
-After=network-online.target containerd.service
-ConditionPathExists=/etc/kubernetes/kubelet.conf
-ConditionPathExists=/etc/kubernetes/kubelet-config.yaml
+Wants=network.target
+After=network.target containerd.service
+ConditionPathExists=/var/lib/kubelet/config.yaml
 
 [Service]
-EnvironmentFile=-/etc/kubernetes/kubelet-flags
-ExecStart=/usr/bin/kubelet --kubeconfig=/etc/kubernetes/kubelet.conf --config=/etc/kubernetes/kubelet-config.yaml $KUBELET_EXTRA_ARGS
+ExecStart=/usr/bin/kubelet
 Restart=always
 StartLimitInterval=0
 RestartSec=10
