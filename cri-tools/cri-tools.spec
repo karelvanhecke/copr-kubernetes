@@ -30,7 +30,7 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %{_bindir}/*
 
 %changelog
-* Tue Nov 07 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.27.1-1
+* Fri Nov 17 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.27.1-1
 - bump cri-tools to v1.27.1
 * Sun May 14 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.26.1-1
 - Bump to v1.26.1
