@@ -118,7 +118,7 @@ install -m 0644 -t %{buildroot}%{_unitdir} %{SOURCE3}
 %{_datadir}/bash-completion/completions/kubectl
 
 %changelog
-* Tue Nov 07 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.28.4-1
+* Fri Nov 17 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.28.4-1
 - bump kubernetes to v1.28.4
 * Tue Nov 07 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.28.3-1
 - bump kubernetes to v1.28.3
